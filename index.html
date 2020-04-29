@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="stylesheet/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id='app'>
+    <div class="allBody">
+      <div class="header">
+        <div class="header__first">
+          <span>空氣品質指標 (AQI)</span>
+          <select v-model="currentCounty" class="header__select">
+            <option disabled>---請選擇地區---</option>
+            <option v-for="(item, index) in County" :key="index">{{item}}</option>
+          </select>
+        </div>
+        <div class="header__second">
+          <li v-for="item in chartData" class="header__second__box">
+            <div :class="item.className">{{item.score}}</div>
+            <div>{{item.text}}</div>
+          </li>
+        </div>
+      </div>
+      <div class="middle">
+        <span>{{currentCounty}}</span>
+        <div class="line"></div>
+        <span>{{selectedDistrictData.PublishTime | ifEmpty }} 更新</span>
+      </div>
+      <div class="content">
+        <!-- {{itemValue}} -->
+        <!-- {{listItem}} -->
+        <!-- 細項表單 -->
+        <div class="dataDetail">
+          <div class="dataDetail__title">
+            <div>{{ selectedDistrictData.SiteName | ifEmpty }}</div>
+            <div :class="AQIsituation(selectedDistrictData.AQI)">{{selectedDistrictData.AQI}}</div>
+          </div>
+          <ul>
+            <li v-for="item in itemValue" class="dataDetail__title__item">
+              <div class="dataDetail__title__item__box">
+                <span class="dataDetail__title__item__zh">{{item.zh}}</span>
+                <span class="dataDetail__title__item__en">{{item.en}}</span>
+              </div>
+              <div class="dataDetail__title__item__value">{{ item.value | ifEmpty }}</div>
+            </li>
+          </ul>
+        </div>
+        <!-- 地區表單 -->
+        <ul class="dataList">
+          <li class="dataList__box" v-for="item in replaceCounty" @click="userSelectDistrick(item)">
+            <div>{{item.SiteName | ifEmpty }} </div>
+            <div :class="AQIsituation(item.AQI)">{{item.AQI | ifEmpty }}</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script src="./all.js"></script>
+</body>
+
+</html>

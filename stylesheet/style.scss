@@ -1,0 +1,243 @@
+@import "reset";
+$xl: 1280px;
+$l: 1024px;
+$m: 768px;
+$s: 376px;
+$base-font-size: 16px;
+$base-line-height: 1.5;
+$font-primary: "Noto Sans TC", Microsoft JhengHei, Arial, sans-serif;
+
+body {
+  background-color: #f0f0f0;
+  position: relative;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  font-family: $font-primary;
+  font-weight: bold;
+  text-align: center;
+}
+
+.allBody {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0;
+    align-items: center;
+    width: 100%;
+
+    &__select {
+      border: solid black 2px;
+      font-family: $font-primary;
+      font-weight: bold;
+      height: 40px;
+    }
+    &__first {
+      display: flex;
+      flex-direction: column;
+      > span {
+        font-size: 40px;
+      }
+      > select {
+        font-size: $base-font-size;
+      }
+    }
+    &__second {
+      display: flex;
+      margin: 20px 0;
+
+      &__box {
+        width: 130px;
+      }
+    }
+  }
+  .middle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 50px;
+    > span:first-child {
+      font-size: 36px;
+    }
+    .line {
+      margin: 10px;
+      transform: translate(0%, -50%);
+      width: 70%;
+      border-bottom: 3px dashed #000;
+    }
+  }
+  .content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 20px;
+    max-height: 1000px;
+
+    .dataDetail {
+      width: 50%;
+      border: solid black 2px;
+      border-radius: 5px;
+      height: 350px;
+
+      &__title {
+        display: flex;
+        margin-bottom: 10px;
+        font-size: 30px;
+        justify-content: space-around;
+
+        & > div:first-child {
+          flex: 1;
+        }
+        & > div:last-child {
+          flex: 1;
+        }
+        &__item {
+          display: flex;
+
+          &__box {
+            flex: 4;
+            text-align: left;
+            padding-left: 20px;
+            margin-bottom: 18px;
+          }
+          &__en {
+            font-size: 16px;
+          }
+          &__value {
+            flex: 1;
+          }
+        }
+      }
+    }
+  }
+  .dataList {
+    display: flex;
+    flex-wrap: wrap;
+    height: 10%;
+    width: 50%;
+
+    &__box {
+      display: flex;
+      border: black 2px solid;
+      border-radius: 5px;
+      width: 40%;
+      font-size: 30px;
+      margin: 0 0 10px 10px;
+
+      & > div:first-child {
+        flex: 3;
+      }
+      & > div:last-child {
+        flex: 1;
+      }
+    }
+  }
+}
+
+@media (max-width: $xl) {
+  .allBody {
+    max-width: $l;
+    .header {
+      flex-direction: column;
+    }
+  }
+}
+
+@media (max-width: $l) {
+  .allBody {
+    
+    .content {
+
+      .dataList {
+        &__box{
+          width:100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $m) {
+  .allBody {
+    .header{
+      &__second {
+        width: 70%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 20px 0;
+  
+        &__box {
+          width: 130px;
+        }
+      }
+    }
+    .content {
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      .dataDetail {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .dataList {
+        width: 100%;
+        justify-content: space-around;
+        &__box{
+          width:45%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $s) {
+
+  .allBody {
+    .content {
+
+      .dataDetail {
+
+      }
+      .dataList {
+
+        &__box{
+          width:100%;
+        }
+      }
+    }
+  }
+}
+
+//等級顏色
+.level_A {
+  background-color: #95f084;
+}
+.level_B {
+  background-color: #ffe695;
+}
+.level_C {
+  background-color: #ffaf6a;
+}
+.level_D {
+  background-color: #ff5757;
+}
+.level_E {
+  background-color: #9777ff;
+}
+.level_F {
+  background-color: #ad1774;
+}
+.font-s {
+  font-size: 22px !important;
+}
